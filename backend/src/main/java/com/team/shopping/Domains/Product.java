@@ -26,7 +26,7 @@ public class Product {
 
     private int price;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(length = 300)
     private String description;
 
     @Column(columnDefinition = "TEXT")
@@ -36,19 +36,19 @@ public class Product {
 
     private int remain;
 
-    @Column(length = 50)
+    @Column(length = 100)
     private String title;
 
-    @Column(length = 50)
+    @Column(length = 100)
     private String delivery;
 
-    @Column(length = 50)
+    @Column(length = 100)
     private String address;
 
-    @Column(length = 50)
+    @Column(columnDefinition = "TEXT")
     private String receipt;
 
-    @Column(length = 50)
+    @Column(length = 100)
     private String a_s;
 
     @Column(length = 50)
@@ -59,7 +59,11 @@ public class Product {
     private LocalDateTime modifyDate;
 
     @Builder
-    public Product(SiteUser seller, Category category, int price, String description, String detail, LocalDateTime dateLimit, int remain, String title, String delivery, String address, String receipt, String a_s, String brand) {
+    public Product(SiteUser seller, Category category,
+                   int price, String description, String detail,
+                   LocalDateTime dateLimit, int remain, String title,
+                   String delivery, String address, String receipt,
+                   String a_s, String brand) {
         this.seller = seller;
         this.category = category;
         this.price = price;

@@ -9,11 +9,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CartRequestDTO {
+public class PaymentLogRequestDTO {
 
-    private Long productId;
+    private List<Long> cartItemIdList;
 
-    private List<Long> optionIdList;
-
-    private int count;
 }

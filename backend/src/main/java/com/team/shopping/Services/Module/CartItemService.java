@@ -16,11 +16,15 @@ public class CartItemService {
 
     private final CartItemRepository cartItemRepository;
 
+    public CartItem get (Long id) {
+        return this.cartItemRepository.findById(id).orElseThrow();
+    }
+
     public List<CartItem> getCartItemList (SiteUser user) {
         return this.cartItemRepository.findAllByUser(user);
     }
 
-    public CartItem save (SiteUser user, Product product, int count) {
+    public CartItem addToCart(SiteUser user, Product product, int count) {
         return this.cartItemRepository.save(CartItem.builder()
                         .count(count)
                         .createDate(LocalDateTime.now())
@@ -29,12 +33,19 @@ public class CartItemService {
                 .build());
     }
 
+    public CartItem save (CartItem cartItem) {
+        return this.cartItemRepository.save(cartItem);
+    }
+
     public CartItem getCartItem(SiteUser user, Product product) {
         return this.cartItemRepository.findByUserAndProduct(user, product);
     }
 
-    public void deleteCartItem(CartItem cartItem) {
+    public void delete(CartItem cartItem) {
         this.cartItemRepository.delete(cartItem);
     }
 
+    public List<CartItem> getList (List<Long> cartItemIdList) {
+        return this.cartItemRepository.findAllById(cartItemIdList);
+    }
 }

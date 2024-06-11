@@ -1,6 +1,7 @@
 package com.team.shopping.Domains;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,5 +22,9 @@ public class PaymentProductDetail {
     @ManyToOne
     private Options option;
 
-
+    @Builder
+    public PaymentProductDetail (PaymentProduct paymentProduct, Options option) {
+        this.paymentProduct = paymentProduct;
+        this.option = option;
+    }
 }
